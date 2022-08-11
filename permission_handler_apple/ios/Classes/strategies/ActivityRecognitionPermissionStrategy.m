@@ -1,6 +1,5 @@
 //
-// Created by Razvan Lung(long1eu) on 2019-02-15.
-// Copyright (c) 2019 The Chromium Authors. All rights reserved.
+// Created by Barton Ip(bartonip) on 2022-08-11.
 //
 
 #import "ActivityRecognitionPermissionStrategy.h"
@@ -26,13 +25,15 @@
 
     if (@available(iOS 11.0, *)) {
         NSDate *now = [NSDate date];
-        [CMPedometer startPedometerUpdatesFromDate:now withHandler:(CMPedometerData *pedometerData, NSError *error) {
+        CMPedometer* pedometer = [[CMPedometer alloc] init];
+        [pedometer startPedometerUpdatesFromDate:now withHandler:^(CMPedometerData *pedometerData, NSError *error) {
             completionHandler([ActivityRecognitionPermissionStrategy determinePermissionStatus:status]);
-            [CMPedometer stopPedometerUpdates];
+            [pedometer stopPedometerUpdates];
         }];
     } else {
         NSTimeInterval duration = 0.1;
-        [CMSensorRecorder recordAccelerometerForDuration:duration];
+        CMSensorRecorder* recorder = [[CMSensorRecorder alloc] init];
+        [recorder recordAccelerometerForDuration:duration];
         completionHandler([ActivityRecognitionPermissionStrategy determinePermissionStatus:status]);
         return;
     }

@@ -44,7 +44,7 @@
 // Info.plist: NSMotionUsageDescription
 // dart: PermissionGroup.activityRecognition
 #ifndef PERMISSION_ACTIVITY_RECOGNITION
-    #define PERMISSION_ACTIVITY_RECOGNITION 1
+    #define PERMISSION_ACTIVITY_RECOGNITION 0
 #endif
 
 // ios: PermissionGroupSpeech
