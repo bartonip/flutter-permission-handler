@@ -40,6 +40,13 @@
     #define PERMISSION_MICROPHONE 0
 #endif
 
+// ios: PermissionGroupMotionFitness
+// Info.plist: NSMotionUsageDescription
+// dart: PermissionGroup.activityRecognition
+#ifndef PERMISSION_ACTIVITY_RECOGNITION
+    #define PERMISSION_ACTIVITY_RECOGNITION 1
+#endif
+
 // ios: PermissionGroupSpeech
 // Info.plist: NSSpeechRecognitionUsageDescription
 // dart: PermissionGroup.speech
